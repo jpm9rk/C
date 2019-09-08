@@ -4,6 +4,7 @@
 //problem1
 //jpm9rk_ligo.cpp
 //On my honor as a student I have neither given nor received help on this assignment
+// Analyzing gravity wave data
 
 
 
