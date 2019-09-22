@@ -1,0 +1,493 @@
+//James Morrissey
+//jpm9rk
+//hw10
+//problem1
+//jpm9rk_trumptweets.cpp
+//On my honor as a student I have neither given nor received help on this assignment
+
+
+#include<string.h>
+#include<math.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+#include"hist.hpp"
+
+
+
+char thing[200];
+
+int main(){
+  //this is the amount of tokens
+  char *info[12983];
+
+  h1 letterCount,wordCount;
+
+  h1init(&letterCount,50,0.5,50.5,"Frequency of each letter of the alphabet in Trump's tweets");
+  h1init(&wordCount,50,0.5,50.5,"Frequency of Most Common Words in Trump's Tweets");
+
+  h1labels(&letterCount,"Letter of the alphabet with 1=a,2=b,3=c and so on","Frequency of each letter");
+  h1labels(&wordCount,"Most popular words, with 1 representing most popular word, 2 2nd most popular, and so on","Frequency of each word");
+
+  int i,counter=0,compare,compare1,length;
+
+ int  aCount=0,bCount=0,cCount=0,dCount=0,eCount=0,fCount=0,gCount=0,hCount=0,iCount=0,jCount=0,kCount=0,lCount=0,mCount=0,nCount=0,oCount=0,pCount=0,qCount=0,rCount=0,sCount=0,tCount=0,uCount=0,vCount=0,wCount=0,xCount=0,yCount=0,zCount=0;
+ int word1n=0,word2n=0,word3n=0,word4n=0,word5n=0,word6n=0,word7n=0,word8n=0,word9n=0,word10n=0,word11n=0,word12n=0,word13n=0,word14n=0,word15n=0,word16n=0,word17n=0,word18n=0,word19n=0,word20n=0,word21n=0,word22n=0,word23n=0,word24n=0,word25n=0,word26n=0,word27n=0,word28n=0,word29n=0,word30n=0,word31n=0,word32n=0,word33n=0,word34n=0,word35n=0,word36n=0,word37n=0,word38n=0,word39n=0,word40n=0,word41n=0,word42n=0,word43n=0,word44n=0,word45n=0,word46n=0,word47n=0,word48n=0,word49n=0,word50n=0;
+
+  FILE *tweetptr;
+  
+  char *token1,*token2;
+
+  char tweetData[5000000];
+  
+  //opens file, prints error message if cant find it
+  ;
+  tweetptr=fopen("trumptweets.dat","r");
+
+  if (tweetptr==NULL)
+    {
+    printf("error finding file");
+    return -1;
+    }
+
+  //use fgets to put all the tweet data in an array tweetData
+  fgets(tweetData,5000000,tweetptr);
+
+  //filters out some of the noise in the data
+  token1=strtok(tweetData," \":,{}");
+
+  while(token1 != NULL)
+       {
+	 //tweet marker
+       compare=strcmp(token1,"text");
+      
+        if(compare==0)
+	 {
+	   
+	   //filter some of the noise surrounding the tweet
+	   token2=strtok(NULL,"\":,{}");
+	   while (token2 != NULL){
+
+	     //filter the tweet itself
+	     token2=strtok(NULL," \":,{}&+;-_()01234556789//.%!?#@\\");
+	     compare1=strncmp(token2,"created",7);
+
+	     //break if you reach the end of a tweet
+	     if(compare1==0)
+	       {break;}
+
+	     //sorry for a ton of if statements didnt see a more efficient way
+	     
+	     length=strlen(token2);
+	     //copy the token into an array for comparisonr
+	     info[counter]=token2;
+
+	     if(strcmp(info[counter],"the")==0)
+	       {
+		 h1fill(&wordCount,1);
+	       word1n++;
+	       }
+	     if(strcmp(info[counter],"be")==0)
+	       {
+		 h1fill(&wordCount,2);
+	       word2n++;
+	       }
+	     if(strcmp(info[counter],"to")==0)
+	       {
+		 h1fill(&wordCount,3);
+	       word3n++;
+	       }
+	     if(strcmp(info[counter],"of")==0)
+	       {
+		 h1fill(&wordCount,4);
+	       word4n++;
+	       }
+	     if(strcmp(info[counter],"and")==0)
+	       {
+		 h1fill(&wordCount,5);
+	       word5n++;
+	       }
+	     if(strcmp(info[counter],"a")==0)
+	       {
+		 h1fill(&wordCount,6);
+	       word6n++;
+	       }
+	     if(strcmp(info[counter],"in")==0)
+	       {
+		 h1fill(&wordCount,7);
+	       word7n++;
+	       }
+	     if(strcmp(info[counter],"that")==0)
+	       {
+		 h1fill(&wordCount,8);
+	       word8n++;
+	       }
+	     if(strcmp(info[counter],"have")==0)
+	       {
+		 h1fill(&wordCount,9);
+	       word9n++;
+	       }	    
+             if(strcmp(info[counter],"I")==0)
+	       {
+		 h1fill(&wordCount,10);
+	       word10n++;
+	       }
+	     if(strcmp(info[counter],"it")==0)
+	       {
+		 h1fill(&wordCount,11);
+	       word11n++;
+	       }
+	     if(strcmp(info[counter],"for")==0)
+	       {
+		 h1fill(&wordCount,12);
+	       word12n++;
+	       }	    
+	     if(strcmp(info[counter],"not")==0)
+	       {
+		 h1fill(&wordCount,13);
+	       word13n++;
+	       }
+	     if(strcmp(info[counter],"on")==0)
+	       {
+		 h1fill(&wordCount,14);
+	       word14n++;
+	       }
+	     if(strcmp(info[counter],"with")==0)
+	       {
+		 h1fill(&wordCount,15);
+	       word15n++;
+	       }
+	     if(strcmp(info[counter],"he")==0)
+	       {
+		 h1fill(&wordCount,16);
+	       word16n++;
+	       }
+	     if(strcmp(info[counter],"as")==0)
+	       {
+		 h1fill(&wordCount,17);
+	       word17n++;
+	       }
+	     if(strcmp(info[counter],"you")==0)
+	       {
+		 h1fill(&wordCount,18);
+	       word18n++;
+	       }
+	     if(strcmp(info[counter],"do")==0)
+	       {
+		 h1fill(&wordCount,19);
+	       word19n++;
+	       }
+	     if(strcmp(info[counter],"at")==0)
+	       {
+		 h1fill(&wordCount,20);
+	       word20n++;
+	       }
+	     if(strcmp(info[counter],"this")==0)
+	       {
+		 h1fill(&wordCount,21);
+	       word21n++;
+	       }
+	     if(strcmp(info[counter],"but")==0)
+	       {
+		 h1fill(&wordCount,22);
+	       word22n++;
+	       }
+	     if(strcmp(info[counter],"his")==0)
+	       {
+		 h1fill(&wordCount,23);
+	       word23n++;
+	       }
+	     if(strcmp(info[counter],"by")==0)
+	       {
+		 h1fill(&wordCount,24);
+	       word24n++;
+	       }
+	     if(strcmp(info[counter],"from")==0)
+	       {
+		 h1fill(&wordCount,25);
+	       word25n++;
+	       }
+	     if(strcmp(info[counter],"they")==0)
+	       {
+		 h1fill(&wordCount,26);
+	       word26n++;
+	       }
+	     if(strcmp(info[counter],"we")==0)
+	       {
+		 h1fill(&wordCount,27);
+	       word27n++;
+	       }
+	     if(strcmp(info[counter],"say")==0)
+	       {
+		 h1fill(&wordCount,28);
+	       word28n++;
+	       }
+	     if(strcmp(info[counter],"her")==0)
+	       {
+		 h1fill(&wordCount,29);
+	       word29n++;
+	       }
+
+	     if(strcmp(info[counter],"she")==0)
+	       {
+		 h1fill(&wordCount,30);
+	       word30n++;
+	       }
+	     if(strcmp(info[counter],"or")==0)
+	       {
+		 h1fill(&wordCount,31);
+	       word31n++;
+	       }
+	     if(strcmp(info[counter],"an")==0)
+	       {
+		 h1fill(&wordCount,32);
+	       word32n++;
+	       }
+	     if(strcmp(info[counter],"will")==0)
+	       {
+		 h1fill(&wordCount,33);
+	       word33n++;
+	       }
+	     if(strcmp(info[counter],"my")==0)
+	       {
+		 h1fill(&wordCount,34);
+	       word34n++;
+	       }
+	     if(strcmp(info[counter],"one")==0)
+	       {
+		 h1fill(&wordCount,35);
+	       word35n++;
+	       }
+	     if(strcmp(info[counter],"all")==0)
+	       {
+		 h1fill(&wordCount,36);
+	       word36n++;
+	       }
+	     if(strcmp(info[counter],"would")==0)
+	       {
+		 h1fill(&wordCount,37);
+	       word37n++;
+	       }
+	     if(strcmp(info[counter],"there")==0)
+	       {
+		 h1fill(&wordCount,38);
+	       word38n++;
+	       }
+	     if(strcmp(info[counter],"their")==0)
+	       {
+		 h1fill(&wordCount,39);
+	       word39n++;
+	       }
+	     if(strcmp(info[counter],"what")==0)
+	       {
+		 h1fill(&wordCount,40);
+	       word40n++;
+	       }
+	     if(strcmp(info[counter],"so")==0)
+	       {
+		 h1fill(&wordCount,41);
+	       word41n++;
+	       }
+	     if(strcmp(info[counter],"up")==0)
+	       {
+		 h1fill(&wordCount,42);
+	       word42n++;
+	       }
+	     if(strcmp(info[counter],"out")==0)
+	       {
+		 h1fill(&wordCount,43);
+	       word43n++;
+	       }
+	     if(strcmp(info[counter],"if")==0)
+	       {
+		 h1fill(&wordCount,44);
+	       word44n++;
+	       }
+	     if(strcmp(info[counter],"about")==0)
+	       {
+		 h1fill(&wordCount,45);
+	       word45n++;
+	       }
+	     if(strcmp(info[counter],"who")==0)
+	       {
+		 h1fill(&wordCount,46);
+	       word46n++;
+	       }
+	     if(strcmp(info[counter],"get")==0)
+	       {
+		 h1fill(&wordCount,47);
+	       word47n++;
+	       }
+	     if(strcmp(info[counter],"which")==0)
+	       {
+		 h1fill(&wordCount,48);
+	       word48n++;
+	       }
+	     if(strcmp(info[counter],"go")==0)
+	       {
+		 h1fill(&wordCount,49);
+	       word49n++;
+	       }
+	     if(strcmp(info[counter],"me")==0)
+	       {
+		 h1fill(&wordCount,50);
+	       word50n++;
+	       }
+
+
+
+	     //copy into character array so I can go through individual characters
+	     strcpy(thing,info[counter]);
+	     //scan through each letter of the token and see what letter of the alphabet its equal to
+	     for(i=0;i<length;i++)
+	       {
+		
+	  	 if (thing[i]=='a'||thing[i]=='A')
+		  {
+		    h1fill(&letterCount,1);
+		   aCount++;
+		  }
+	  	 if (thing[i]=='b'||thing[i]=='B')
+		  {
+		    h1fill(&letterCount,2);
+		   bCount++;
+		  }
+	  	 if (thing[i]=='c'||thing[i]=='C')
+		  {
+		    h1fill(&letterCount,3);
+		   cCount++;
+		  }
+	  	 if (thing[i]=='d'||thing[i]=='D')
+		  {
+		    h1fill(&letterCount,4);
+		   dCount++;
+		  }
+	  	 if (thing[i]=='e'||thing[i]=='E')
+		  {
+		    h1fill(&letterCount,5);
+		   eCount++;
+		  }
+	  	 if (thing[i]=='f'||thing[i]=='F')
+		  {
+		    h1fill(&letterCount,6);
+		   fCount++;
+		  }
+	  	 if (thing[i]=='g'||thing[i]=='G')
+		  {
+		    h1fill(&letterCount,7);
+		   gCount++;
+		  }
+	  	 if (thing[i]=='h'||thing[i]=='H')
+		  {
+		    h1fill(&letterCount,8);
+		   hCount++;
+		  }
+	  	 if (thing[i]=='i'||thing[i]=='I')
+		  {
+		    h1fill(&letterCount,9);
+		   iCount++;
+		  }
+	  	 if (thing[i]=='j'||thing[i]=='J')
+		  {
+		    h1fill(&letterCount,10);
+		   jCount++;
+		  }
+	  	 if (thing[i]=='k'||thing[i]=='K')
+		  {
+		    h1fill(&letterCount,11);
+		   kCount++;
+		  }
+	  	 if (thing[i]=='l'||thing[i]=='L')
+		  {
+		    h1fill(&letterCount,12);
+		   lCount++;
+		  }
+	  	 if (thing[i]=='m'||thing[i]=='M')
+		  {
+		    h1fill(&letterCount,13);
+		   mCount++;
+		  }
+	  	 if (thing[i]=='n'||thing[i]=='N')
+		  {
+		    h1fill(&letterCount,14);
+		   nCount++;
+		  }
+	  	 if (thing[i]=='o'||thing[i]=='O')
+		  {
+		    h1fill(&letterCount,15);
+		   oCount++;
+		  }
+	  	 if (thing[i]=='p'||thing[i]=='P')
+		  {
+		    h1fill(&letterCount,16);
+		   pCount++;
+		  }
+	  	 if (thing[i]=='q'||thing[i]=='Q')
+		  {
+		    h1fill(&letterCount,17);
+		   qCount++;
+		  }
+	  	 if (thing[i]=='r'||thing[i]=='R')
+		  {
+		    h1fill(&letterCount,18);
+		   rCount++;
+		  }
+	  	 if (thing[i]=='s'||thing[i]=='S')
+		  {
+		    h1fill(&letterCount,19);
+		   sCount++;
+		  }
+	  	 if (thing[i]=='t'||thing[i]=='T')
+		  {
+		    h1fill(&letterCount,20);
+		   tCount++;
+		  }
+	  	 if (thing[i]=='u'||thing[i]=='U')
+		  {
+		    h1fill(&letterCount,21);
+		   uCount++;
+		  }
+	  	 if (thing[i]=='v'||thing[i]=='V')
+		  {
+		    h1fill(&letterCount,22);
+		   vCount++;
+		  }
+	  	 if (thing[i]=='w'||thing[i]=='W')
+		  {
+		    h1fill(&letterCount,23);
+		   wCount++;
+		  }
+	  	 if (thing[i]=='x'||thing[i]=='X')
+		  {
+		    h1fill(&letterCount,24);
+		   xCount++;
+		  }
+	  	 if (thing[i]=='y'||thing[i]=='Y')
+		  {
+		    h1fill(&letterCount,25);
+		   yCount++;
+		  }
+	  	 if (thing[i]=='z'||thing[i]=='Z')
+		  {
+		    h1fill(&letterCount,26);
+		   zCount++;
+		  }
+		
+	     
+	     counter++;
+	       }
+	   }
+	   
+	 }
+	//update the token so this loop continues to run
+        token1=strtok(NULL," \":,{}");
+       }
+	 
+	 
+  h1plot(&letterCount,"");
+  h1plot(&wordCount,"");
+
+  
+      
+  return 0;
+}
