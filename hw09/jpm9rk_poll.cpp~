@@ -1,0 +1,91 @@
+//James Morrissey
+//jpm9rk
+//hw09
+//problem 2
+//jpm9rk_poll.cpp
+//On my honor as a student I have neither given nor received
+// help on this assignment
+
+
+#include<stdlib.h>
+#include<math.h>
+#include<stdio.h>
+#include"hist.hpp"
+#include"random.hpp"
+
+int main(){
+
+  h1 roundEarth,flatEarth,SMH,whatEven;
+  int i,k,randNum;
+  double percent1,percent2,percent3,percent4;
+
+h1init(&roundEarth,100,0,100,"percent response of round earth");
+h1init(&flatEarth,40,0,25,"percent response of flat earth");
+h1init(&SMH,30,0,10,"percent response of unsure");
+h1init(&whatEven,30,0,10,"percent response of unspecified answer");
+h1labels(&roundEarth,"percentage who answered round earth","Frequency of percentage in 500 trials");
+h1labels(&flatEarth,"percentage who answered flat earth","Frequency of percentage in 500 trials");
+h1labels(&SMH,"percentage who answered unsure","Frequency of percentage in 500 trials");
+h1labels(&whatEven,"percentage who answered unspecified","Frequency of percentage in 500 trials");
+
+
+  double nRoundEarth=0;
+  double nFlatEarth=0;
+  double nSMH=0;
+  double nWhatEven=0;
+
+
+  for(i=0;i<800;i++)
+    {
+      nRoundEarth=0;
+      nFlatEarth=0;
+      nSMH=0;
+      nWhatEven=0;
+
+       for(k=0;k<1420;k++)
+	{
+	  randNum=randui(1,100);
+	  if(randNum>=1 && randNum<=78)
+	    nRoundEarth++;
+	  if (randNum>78 && randNum<97)
+	    nFlatEarth++;
+	  if(randNum>=97 && randNum<=99)
+	    nSMH++;
+	  if(randNum==100)
+	    nWhatEven++;
+
+
+	}
+       percent1=(nRoundEarth/(1420.0))*100;
+       percent2=(nFlatEarth/(1420.0))*100;
+       percent3=(nSMH/(1420.0))*100;
+       percent4=(nWhatEven/(1420.0))*100;
+
+       h1fill(&roundEarth,percent1,1.0);
+       h1fill(&flatEarth,percent2,1.0);
+       h1fill(&SMH,percent3,1.0);
+       h1fill(&whatEven,percent4,1.0);
+
+    }
+  h1plot(&roundEarth,"");
+  h1plot(&flatEarth,"");
+  h1plot(&SMH,"");
+  h1plot(&whatEven,"");
+  
+  h1plot(&roundEarth,"Round_Earth_Response.pdf");
+  h1plot(&flatEarth,"Flat_Earth_Response.pdf");
+  h1plot(&SMH,"Unsure_Response.pdf");
+  h1plot(&whatEven,"Unspecified_Response.pdf");
+  
+  
+
+  //Yes it is a reliable pole, over large amounts of trials the histograms experience a
+  //sharp peak around the expected values. Also, for a random sampling of 1600, the
+  //margin of error is around 2.5%, and for a random sample size of 400 the
+  //margin of error is 5%. For these numbers it is reasonable to assume that a 
+  //random sampling of 1420 people will not have an overly large margin of error
+
+
+ return 0;
+
+}
