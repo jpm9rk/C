@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+
+  float x1,y1,z1;
+
+  float x2,y2,z2;
+
+  float x3,y3,z3;
+
+  float d1,d2,d3;
+
+  float s,area;
+
+  FILE *inptr;
+
+  inptr=fopen("points.dat","r");
+
+  fscanf(inptr,"%f %f %f",&x1,&y1,&z1);
+  printf("%f %f %f",&x1,&y1,&z1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  return 0;
+
+
+}

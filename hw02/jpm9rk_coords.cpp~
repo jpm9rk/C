@@ -1,0 +1,20 @@
+
+
+
+#include<stdio.h>
+
+int main()
+{
+  float x,y,r,theta;
+
+  printf("Please enter the distance r, and the angle theta measured counterclockwise with respect to the x axis:\n"
+
+   scanf("%f %f", &r, &theta);
+
+
+
+
+
+	 return 0;
+	 }
+	 
