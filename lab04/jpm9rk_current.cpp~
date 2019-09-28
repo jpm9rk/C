@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+float effresistance(float a, float b, float c){
+
+  float res= 1/((1/a)+(1/b)+(1/c));
+  return res;
+
+  int main(){
+    
+    float voltage;
+
+
+    printf("please enter the voltage of the circuit\n")
+
+
+
+      scanf("%f",&voltage);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    return0;
+  }

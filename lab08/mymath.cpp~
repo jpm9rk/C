@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<math.h>
+
+
+
+
+  double sinCosSquared(double x){
+
+    // double y=  sin(x);
+
+    // double  z= cos(x)*  cos(x);
+    double cos(double x);
+   
+      double sin(double x);
+
+     double  y=sin(x)*(cos(x)*cos(x));
+
+      return y;
+
+
+
+
+
+
+
+}
+
+  int main(){
+
+
+
+
+
+
+
+
+    return 0;
+
+
+  }

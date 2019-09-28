@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<math.h>
+
+
+
+
+
+
+
+
+
+int main(){
+
+  int nPosition;
+
+
+  printf("please enter a positive integer n representing the position in the Fibonacci Series");
+
+  scanf("%d",&nPosition);
+
+
+
+
+
+
+
+
+
+
+}

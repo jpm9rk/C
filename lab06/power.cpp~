@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<math.h>
+
+
+
+double ipow(double x, int n){
+
+  return number;
+
+}
+
+
+int main(){
+
+  double x;
+
+  int n;
+
+  printf("please enter a floating point x and an int n\n");
+
+  scanf("%f  %d", &x,&n);
+
+
+
+
+
+
+
+
+}
